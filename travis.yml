@@ -1,0 +1,16 @@
+language: javscirpt
+
+
+# 可以进行其他操作,包括改名或压缩
+before_deploy:
+# tar -czf . lizhi.tar.gz
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  file: "$TRAVIS_BUILD_DIR/dist/index.js"
+  api_key:
+    secure: "$API_KEY"
+  on:
+    tags: true #发布  tag版 时才进行发包   
+    draft: false # 不发表drafs
